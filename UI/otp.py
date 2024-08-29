@@ -9,11 +9,13 @@ from kivymd.uix.toolbar import MDTopAppBar
 from kivy.clock import Clock
 from datetime import datetime
 from base_screen import BaseScreen
+from backend.otp_auth import OtpAuth
+from kivymd.uix.dialog import MDDialog
 
 class otpScreen(BaseScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
+        self.otp_auth = OtpAuth()
         self.actual_input = ""
         
         # Display label for showing the input
@@ -59,6 +61,10 @@ class otpScreen(BaseScreen):
         go_back.size_hint = (0.1, 0.05)
         self.add_widget(go_back)
 
+    def on_enter(self, *args):
+        super().on_enter(*args)
+        self.otp_auth.send_otp()
+        
     def on_button_press(self, instance):
         self.actual_input += instance.text
         # Update the label to show asterisks
@@ -71,5 +77,16 @@ class otpScreen(BaseScreen):
     def submit_input(self, instance):
         # Handle the entered input here
         entered_code = self.actual_input
-        print(f"Entered code: {entered_code}")
-        self.clear_input(None)  # Clear the input after submission
+        if self.otp_auth.verify_otp(entered_code):
+            self.manager.current = "success"
+        else:
+            self.show_dialog("Access Denied", "Incorrect OTP.")
+        self.clear_input(None)
+
+    def show_dialog(self, title, text):
+        dialog = MDDialog(
+            title=title,
+            text=text,
+            buttons=[MDRaisedButton(text="OK", on_release=lambda x: dialog.dismiss())]
+        )
+        dialog.open()

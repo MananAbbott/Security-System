@@ -7,16 +7,20 @@ from home_screen import HomeScreen
 from otp import otpScreen
 from rfid import RFIDScreen
 from guest import guestScreen
+from biometrics import BiometricsScreen
+from success import SuccessScreen
 
 class MyApp(MDApp):
     def build(self):
         self.theme_cls.theme_style = "Dark"  # Set the initial theme to Dark
         self.screen_manager = MDScreenManager()
-        self.screen_manager.add_widget(HomeScreen(name="home"))
-        self.screen_manager.add_widget(KeypadScreen(name="keypad"))
-        self.screen_manager.add_widget(otpScreen(name="otp"))
+        self.screen_manager.add_widget(HomeScreen(name="home")) # Ready
+        self.screen_manager.add_widget(KeypadScreen(name="keypad")) # Ready
+        self.screen_manager.add_widget(otpScreen(name="otp")) # Ready
         self.screen_manager.add_widget(RFIDScreen(name="rfid"))
         self.screen_manager.add_widget(guestScreen(name="guest"))
+        self.screen_manager.add_widget(BiometricsScreen(name="biometrics"))
+        self.screen_manager.add_widget(SuccessScreen(name="success")) # Ready
         return self.screen_manager
 
 # Run the application
