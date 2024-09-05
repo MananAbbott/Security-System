@@ -1,13 +1,6 @@
 from kivymd.app import MDApp
-from kivymd.uix.screenmanager import MDScreenManager
-from kivymd.uix.screen import Screen
-from kivymd.uix.button import MDFlatButton, MDIconButton
 from kivymd.uix.label import MDLabel
-from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.anchorlayout import AnchorLayout
-from kivymd.uix.toolbar import MDTopAppBar
 from kivy.clock import Clock
-from datetime import datetime
 from base_screen import BaseScreen
 from kivy.core.window import Window
 import subprocess
@@ -21,7 +14,8 @@ class HomeScreen(BaseScreen):
             text="Select an authentication method",
             halign="center",
             pos_hint={"center_x": 0.5, "center_y": 0.85},
-            font_style="H4"
+            font_style="Display",
+            role="small" 
         )
         
         # Create buttons for the HomeScreen

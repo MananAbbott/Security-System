@@ -1,11 +1,11 @@
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.screen import Screen
-from kivymd.uix.button import MDFlatButton, MDIconButton
+from kivymd.uix.button import MDButton, MDIconButton, MDButtonText
 from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.anchorlayout import AnchorLayout
-from kivymd.uix.toolbar import MDTopAppBar
+from kivymd.uix.appbar import MDTopAppBar, MDTopAppBarTitle
 from kivy.clock import Clock
 from datetime import datetime
 from kivymd.uix.gridlayout import MDGridLayout
@@ -19,11 +19,11 @@ class BaseScreen(Screen):
 
         # Toolbar
         self.toolbar = MDTopAppBar(
-            title="",
             pos_hint={"top": 1},
             md_bg_color=self.get_button_color()[2],
-            specific_text_color=self.get_button_color()[1],
+            # text_color=self.get_button_color()[1],
         )
+        self.toolbar.add_widget(MDTopAppBarTitle(text="", text_color = self.get_button_color()[1]))
         self.add_widget(self.toolbar)
 
         # Start updating time on the toolbar
@@ -103,14 +103,12 @@ class BaseScreen(Screen):
         self.toolbar.title = current_time
     
     def build_button(self, text, x=None, y=None, on_press=None):
-        button = MDFlatButton(
-            text=text,
+        button = MDButton(
             md_bg_color=self.get_button_color()[2],
             line_color=self.get_button_color()[0],
-            text_color=self.get_button_color()[1],
-            font_size=36,
             size_hint=(0.3, 0.1)
         )
+        button.add_widget(MDButtonText(text=text, text_color=self.get_button_color()[1], font_style="Display", role="small"))
         if x and y:
             button.pos_hint = {"center_x": x, "center_y": y}
         

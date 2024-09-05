@@ -11,7 +11,8 @@ class guestScreen(BaseScreen):
         self.prompt_label = MDLabel(
             text="Hello Guest! Please tap your RFID card to login",
             halign="center",
-            font_style="H4",
+            font_style="Display",
+            font_size=20,
             size_hint=(1, 0.2),
             theme_text_color="Primary",
             pos_hint={"center_x": 0.5, "center_y": 0.6}  # Position the label on the screen

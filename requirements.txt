@@ -1,13 +1,18 @@
+asyncgui==0.6.3
+asynckivy==0.6.4
+bcrypt==4.2.0
 certifi==2024.7.4
 charset-normalizer==3.3.2
 docutils==0.21.2
 idna==3.8
 Kivy==2.3.0
 Kivy-Garden==0.1.5
-kivymd==1.2.0
+kivymd @ https://github.com/kivymd/KivyMD/archive/master.zip#sha256=ab18d4cc36e2d53ea87f463d01299c39c75bae66cc1950f9bc6397f23317c848
+materialyoucolor==2.0.9
 numpy==2.1.0
 opencv-python==4.10.0.84
 pillow==10.4.0
 Pygments==2.18.0
+pyotp==2.9.0
 requests==2.32.3
 urllib3==2.2.2

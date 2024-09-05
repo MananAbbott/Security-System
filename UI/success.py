@@ -11,7 +11,8 @@ class SuccessScreen(BaseScreen):
         self.label = MDLabel(
             text="Welcome",
             halign="center",
-            font_style="H2",
+            font_style="Display",
+            font_size=20,
             size_hint=(1, 0.05),
             theme_text_color="Primary",
             bold=True,

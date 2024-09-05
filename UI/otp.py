@@ -1,13 +1,8 @@
-from kivymd.app import MDApp
-from kivymd.uix.screenmanager import MDScreenManager
-from kivymd.uix.screen import Screen
-from kivymd.uix.button import MDRaisedButton
+from kivymd.uix.button import MDButton
 from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.toolbar import MDTopAppBar
 from kivy.clock import Clock
-from datetime import datetime
 from base_screen import BaseScreen
 from backend.otp_auth import OtpAuth
 from kivymd.uix.dialog import MDDialog
@@ -22,7 +17,8 @@ class otpScreen(BaseScreen):
         self.input_label = MDLabel(
             text="",
             halign="center",
-            font_style="H2",
+            font_style="Display",
+            font_size=20,
             size_hint=(1, 0.05),
             theme_text_color="Primary",
             bold=True,
@@ -87,6 +83,6 @@ class otpScreen(BaseScreen):
         dialog = MDDialog(
             title=title,
             text=text,
-            buttons=[MDRaisedButton(text="OK", on_release=lambda x: dialog.dismiss())]
+            buttons=[MDButton(text="OK", on_release=lambda x: dialog.dismiss())]
         )
         dialog.open()
