@@ -1,2 +1,4 @@
 home_lock_env/
 Facial\ Recognition/
+.venv/
+__pycache__/
