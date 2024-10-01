@@ -23,6 +23,7 @@ class BaseScreen(QWidget):
         self.home_icon_dark = QIcon(os.path.join(self.icon_path, "dark-home.png"))
         self.home_icon_light = QIcon(os.path.join(self.icon_path, "light-home.png"))
         self.home_button = QPushButton(self)
+        self.home_button.setFixedSize(50, 50)
         self.home_button.clicked.connect(self.return_home)
         self.button_layout.addWidget(self.home_button)
 
@@ -35,6 +36,7 @@ class BaseScreen(QWidget):
         self.dark_icon = QIcon(os.path.join(self.icon_path, "dark-mode.png"))
 
         self.theme_button = QPushButton(self)
+        self.theme_button.setFixedSize(50, 50)
         self.theme_button.clicked.connect(self.toggle_theme)
         self.button_layout.addWidget(self.theme_button)
 

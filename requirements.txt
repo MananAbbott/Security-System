@@ -1,7 +1,7 @@
 bcrypt
 certifi
 charset-normalizer
-docutil
+docutils
 idna
 numpy
 opencv-python
@@ -9,5 +9,5 @@ pillow
 Pygments
 pyotp
 requests
-urllib
+urllib3
 pyqt6
