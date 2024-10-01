@@ -1,5 +1,6 @@
-from PyQt5.QtWidgets import QLabel, QPushButton, QGridLayout
-from PyQt5.QtCore import Qt
+from PyQt6.QtWidgets import QLabel, QPushButton, QGridLayout
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QFont
 from base_screen import BaseScreen
 import subprocess
 
@@ -8,7 +9,8 @@ class HomeScreen(BaseScreen):
         super().__init__(stacked_widget)
         
         label = QLabel("Select an authentication method", self)
-        label.setAlignment(Qt.AlignCenter)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        label.setFont(QFont("Arial", 12))
         self.layout.addWidget(label)
 
         grid_layout = QGridLayout()
@@ -25,8 +27,12 @@ class HomeScreen(BaseScreen):
 
         for i, (text, func) in enumerate(buttons):
             button = QPushButton(text, self)
+            button.setMinimumSize(150, 120)
+            button.setFont(QFont("Arial", 14))
             button.clicked.connect(func)
             grid_layout.addWidget(button, i // 2, i % 2)
+        
+        grid_layout.SizeConstraint.SetFixedSize
 
     def switch_to_biometrics(self):
         self.stacked_widget.setCurrentIndex(5)  # Adjust index as needed
@@ -45,5 +51,4 @@ class HomeScreen(BaseScreen):
 
     def sleep_screen(self):
         # Turn off the display (enter sleep mode)
-        subprocess.run(['vcgencmd', 'display_power', '0'])
-        # You might need to implement a way to wake up the screen in PyQt5
+        exit()

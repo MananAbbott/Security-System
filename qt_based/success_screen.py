@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QLabel
-from PyQt5.QtCore import QTimer, Qt
+from PyQt6.QtWidgets import QLabel
+from PyQt6.QtCore import QTimer, Qt
 from base_screen import BaseScreen
 
 class SuccessScreen(BaseScreen):
@@ -7,7 +7,7 @@ class SuccessScreen(BaseScreen):
         super().__init__(stacked_widget)
         
         self.welcome_label = QLabel("Welcome", self)
-        self.welcome_label.setAlignment(Qt.AlignCenter)
+        self.welcome_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.welcome_label.setStyleSheet("font-size: 48px; font-weight: bold;")
         self.layout.addWidget(self.welcome_label)
 

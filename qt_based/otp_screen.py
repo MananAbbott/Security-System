@@ -1,4 +1,6 @@
-from PyQt5.QtWidgets import QGridLayout, QPushButton, QLineEdit, QMessageBox
+from PyQt6.QtWidgets import QGridLayout, QPushButton, QLineEdit, QMessageBox
+from PyQt6.QtGui import QFont
+from PyQt6.QtCore import Qt
 from base_screen import BaseScreen
 from otp_auth import OtpAuth
 
@@ -8,8 +10,11 @@ class OTPScreen(BaseScreen):
         
         self.otp_auth = OtpAuth()
         
-        self.input_field = QLineEdit(self)
-        self.input_field.setEchoMode(QLineEdit.Password)
+        self.input_field = QLineEdit()
+        self.input_field.setFixedSize(300, 50)
+        self.input_field.setEchoMode(QLineEdit.EchoMode.Password)
+        self.input_field.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
         self.layout.addWidget(self.input_field)
 
         keypad_layout = QGridLayout()
@@ -34,6 +39,9 @@ class OTPScreen(BaseScreen):
             else:
                 btn = QPushButton(button, self)
                 btn.clicked.connect(lambda _, digit=button: self.on_button_press(digit))
+
+            btn.setFixedSize(100, 80)
+            btn.setFont(QFont('Arial', 20))
             
             keypad_layout.addWidget(btn, *position)
 

@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QLabel
-from PyQt5.QtCore import QTimer, Qt
-from PyQt5.QtGui import QImage, QPixmap
+from PyQt6.QtWidgets import QLabel
+from PyQt6.QtCore import QTimer, Qt
+from PyQt6.QtGui import QImage, QPixmap
 from base_screen import BaseScreen
 import cv2
 
@@ -32,7 +32,7 @@ class BiometricsScreen(BaseScreen):
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             h, w, ch = frame.shape
             bytes_per_line = ch * w
-            qt_image = QImage(frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+            qt_image = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)
             pixmap = QPixmap.fromImage(qt_image)
             self.camera_label.setPixmap(pixmap)
 

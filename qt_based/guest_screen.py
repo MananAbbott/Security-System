@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QLabel
-from PyQt5.QtCore import QTimer, Qt
+from PyQt6.QtWidgets import QLabel
+from PyQt6.QtCore import QTimer, Qt
 from base_screen import BaseScreen
 
 class GuestScreen(BaseScreen):
@@ -7,7 +7,7 @@ class GuestScreen(BaseScreen):
         super().__init__(stacked_widget)
         
         self.prompt_label = QLabel("Hello Guest! Please tap your RFID card to login", self)
-        self.prompt_label.setAlignment(Qt.AlignCenter)
+        self.prompt_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.layout.addWidget(self.prompt_label)
 
     def showEvent(self, event):
